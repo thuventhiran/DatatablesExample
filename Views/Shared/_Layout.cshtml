@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="../../Content/foundation/normalize.css" type="text/css" rel="Stylesheet" />
+    <link href="../../Content/foundation/foundation.mvc.css" type="text/css" rel="Stylesheet" />
+    <link href="../../Content/foundation/foundation.css" type="text/css" rel="Stylesheet" />
+    <link href="../../Content/DataTables-1.9.4/foundation/dataTables.foundation.css" type="text/css" rel="Stylesheet" />
+
+</head>
+<body>
+    @RenderBody()
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+
+    <script type="text/javascript" language="javascript" src="../../Scripts/DataTables-1.9.4/media/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript" src="../../Scripts/foundation/foundation.js"></script>
+
+    <script type="text/javascript" language="javascript" src="../../Content/DataTables-1.9.4/foundation/dataTables.foundation.js"></script>
+</body>
+</html>

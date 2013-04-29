@@ -1,0 +1,47 @@
+﻿@model DatatablesExample.Models.HomeModel
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>
+	Index</h2>
+<div class="row">
+	<div class="twelve columns">
+		<table id="myTable">
+			<thead>
+				<tr>
+					<th>
+						First Name
+					</th>
+					<th>
+						Last Name
+					</th>
+					<th>
+						Nationality
+					</th>
+					<th>
+						Date of Birth
+					</th>
+				</tr>
+			</thead>
+		</table>
+	</div>
+</div>
+@section scripts{
+	<script type="text/javascript" language="javascript">
+		$(function () {
+
+			$('#myTable').dataTable({
+				"bServerSide": true,
+				"sAjaxSource": "Home/GetAjaxData",
+				"bProcessing": true,
+				"aoColumns": [
+						{ "sName": "First Name" },
+						{ "sName": "Last Name" },
+						{ "sName": "Nationality" },
+						{ "sName": "Date of Birth" }
+					]
+			});
+		});
+	</script>
+}

@@ -298,6 +298,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Licence.txt" />
+    <Content Include="Readme.html" />
     <Content Include="Scripts\DataTables-1.9.4\docs\media\js\doc.js" />
     <Content Include="Scripts\DataTables-1.9.4\docs\media\js\jquery.js" />
     <Content Include="Scripts\DataTables-1.9.4\docs\media\js\shBrushJScript.js" />

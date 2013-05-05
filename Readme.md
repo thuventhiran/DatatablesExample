@@ -1,6 +1,9 @@
-﻿
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
     <link href="Content/foundation/foundation.css" type="text/css" rel="Stylesheet" />
-
+</head>
+<body>
     <div class="row">
         <div class="twelve columns">
             <h2>jQuery Datatables with ASP.NET MVC</h2>
@@ -40,4 +43,6 @@
     </div>
 
 
-
+    
+</body>
+</html>

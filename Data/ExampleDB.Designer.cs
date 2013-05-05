@@ -129,6 +129,36 @@ namespace DatatablesExample.Data
     
             return base.ExecuteFunction<pr_SearchPerson_Result>("pr_SearchPerson", filterTermParameter, sortIndexParameter, sortDirectionParameter, startRowNumParameter, endRowNumParameter, totalRowsCount, filteredRowsCount);
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="firstName">No Metadata Documentation available.</param>
+        /// <param name="lastName">No Metadata Documentation available.</param>
+        public ObjectResult<pr_GetPersonDetail_Result> pr_GetPersonDetail(global::System.String firstName, global::System.String lastName)
+        {
+            ObjectParameter firstNameParameter;
+            if (firstName != null)
+            {
+                firstNameParameter = new ObjectParameter("FirstName", firstName);
+            }
+            else
+            {
+                firstNameParameter = new ObjectParameter("FirstName", typeof(global::System.String));
+            }
+    
+            ObjectParameter lastNameParameter;
+            if (lastName != null)
+            {
+                lastNameParameter = new ObjectParameter("LastName", lastName);
+            }
+            else
+            {
+                lastNameParameter = new ObjectParameter("LastName", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction<pr_GetPersonDetail_Result>("pr_GetPersonDetail", firstNameParameter, lastNameParameter);
+        }
 
         #endregion
 
@@ -137,6 +167,116 @@ namespace DatatablesExample.Data
     #endregion
 
     #region ComplexTypes
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="ExampleModel", Name="pr_GetPersonDetail_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class pr_GetPersonDetail_Result : ComplexObject
+    {
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> DateAdded
+        {
+            get
+            {
+                return _DateAdded;
+            }
+            set
+            {
+                OnDateAddedChanging(value);
+                ReportPropertyChanging("DateAdded");
+                _DateAdded = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DateAdded");
+                OnDateAddedChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _DateAdded;
+        partial void OnDateAddedChanging(Nullable<global::System.DateTime> value);
+        partial void OnDateAddedChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String MobileTel
+        {
+            get
+            {
+                return _MobileTel;
+            }
+            set
+            {
+                OnMobileTelChanging(value);
+                ReportPropertyChanging("MobileTel");
+                _MobileTel = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("MobileTel");
+                OnMobileTelChanged();
+            }
+        }
+        private global::System.String _MobileTel;
+        partial void OnMobileTelChanging(global::System.String value);
+        partial void OnMobileTelChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String HomeTel
+        {
+            get
+            {
+                return _HomeTel;
+            }
+            set
+            {
+                OnHomeTelChanging(value);
+                ReportPropertyChanging("HomeTel");
+                _HomeTel = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("HomeTel");
+                OnHomeTelChanged();
+            }
+        }
+        private global::System.String _HomeTel;
+        partial void OnHomeTelChanging(global::System.String value);
+        partial void OnHomeTelChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String EmailAddress
+        {
+            get
+            {
+                return _EmailAddress;
+            }
+            set
+            {
+                OnEmailAddressChanging(value);
+                ReportPropertyChanging("EmailAddress");
+                _EmailAddress = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("EmailAddress");
+                OnEmailAddressChanged();
+            }
+        }
+        private global::System.String _EmailAddress;
+        partial void OnEmailAddressChanging(global::System.String value);
+        partial void OnEmailAddressChanged();
+
+        #endregion
+
+    }
     
     /// <summary>
     /// No Metadata Documentation available.

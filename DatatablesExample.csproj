@@ -129,6 +129,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RowDetailExampleController.cs" />
     <Compile Include="Data\ExampleDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -139,6 +140,7 @@
     </Compile>
     <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Models\JQueryDataTableParamModel.cs" />
+    <Compile Include="Models\RowDetailModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -235,6 +237,9 @@
     <Content Include="Content\foundation\app.css" />
     <Content Include="Content\foundation\foundation.css" />
     <Content Include="Content\foundation\foundation.mvc.css" />
+    <Content Include="Content\foundation\foundation_icons_general\fonts\general_foundicons.svg" />
+    <Content Include="Content\foundation\foundation_icons_general\stylesheets\general_foundicons.css" />
+    <Content Include="Content\foundation\foundation_icons_general\stylesheets\general_foundicons_ie7.css" />
     <Content Include="Content\foundation\normalize.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -392,6 +397,9 @@
       <LastGenOutput>ExampleDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <Content Include="Readme.md" />
+    <Content Include="Content\foundation\foundation_icons_general\fonts\general_foundicons.eot" />
+    <Content Include="Content\foundation\foundation_icons_general\fonts\general_foundicons.ttf" />
+    <Content Include="Content\foundation\foundation_icons_general\fonts\general_foundicons.woff" />
     <None Include="Scripts\DataTables-1.9.4\extras\AutoFill\media\js\AutoFill.min.js.gz" />
     <None Include="Scripts\DataTables-1.9.4\extras\ColReorder\media\js\ColReorder.min.js.gz" />
     <None Include="Scripts\DataTables-1.9.4\extras\ColVis\media\js\ColVis.min.js.gz" />
@@ -399,7 +407,8 @@
     <None Include="Scripts\DataTables-1.9.4\extras\Scroller\media\js\dataTables.scroller.min.js.gz" />
     <None Include="Scripts\DataTables-1.9.4\extras\TableTools\media\js\TableTools.min.js.gz" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\_Foundation.cshtml" />
+    <Content Include="Views\Shared\RowDetail.cshtml" />
+    <Content Include="Views\RowDetailExample\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -8,10 +8,10 @@ using DatatablesExample.Models;
 
 namespace DatatablesExample.Controllers
 {
-  public class HomeController : Controller
+  public class RowDetailExampleController : Controller
   {
     //
-    // GET: /Home/
+    // GET: /RowDetailExample/
 
     public ActionResult Index()
     {
@@ -33,7 +33,12 @@ namespace DatatablesExample.Controllers
                                         totalRowsCount,
                                         filteredRowsCount);
 
-        var aaData = data.Select(d => new string[] { d.FirstName, d.LastName, d.Nationality, d.DateOfBirth.Value.ToString("dd MMM yyyy") }).ToArray();
+        var aaData = data.Select(d => new string[] { 
+                                                      string.Empty //this empty element is a dummy placeholder for the expander column
+                                                      , d.FirstName
+                                                      , d.LastName
+                                                      , d.Nationality
+                                                      , d.DateOfBirth.Value.ToString("dd MMM yyyy") }).ToArray();
 
         return Json(new
         {
@@ -42,6 +47,18 @@ namespace DatatablesExample.Controllers
           iTotalRecords = Convert.ToInt32(totalRowsCount.Value),
           iTotalDisplayRecords = Convert.ToInt32(filteredRowsCount.Value)
         }, JsonRequestBehavior.AllowGet);
+      }
+    }
+
+    public PartialViewResult GetRowDetail(string firstName, string lastName)
+    {
+      using (var e = new ExampleEntities())
+      {
+        var data = e.pr_GetPersonDetail(firstName, lastName);
+
+        var detail = data.FirstOrDefault();
+
+        return PartialView("RowDetail", new RowDetailModel() { DateAdded = detail.DateAdded, MobileTel = detail.MobileTel, HomeTel = detail.HomeTel, EmailAddress = detail.EmailAddress });
       }
     }
 

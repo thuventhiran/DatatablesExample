@@ -1,0 +1,31 @@
+﻿@model DatatablesExample.Models.RowDetailModel
+
+<table>
+    <tr>
+        <td>
+            <h5>Date Added</h5>
+        </td>
+        <td>
+            @if (Model.DateAdded.HasValue)
+            {
+                @Model.DateAdded.Value.ToString("dd MMM yyyy")
+            }
+            else
+            {
+                @Html.Raw("&nbsp;")
+            }
+        </td>
+    </tr>
+    <tr>
+        <td><h5>Mobile Tel. No.</h5></td>
+        <td>@Model.MobileTel</td>
+    </tr>
+    <tr>
+        <td><h5>Home Tel. No.</h5></td>
+        <td>@Model.HomeTel</td>
+    </tr>
+    <tr>
+        <td><h5>Email Address</h5></td>
+        <td>@Model.EmailAddress</td>
+    </tr>
+</table>

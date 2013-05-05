@@ -6,6 +6,10 @@
     <edmx:StorageModels>
     <Schema Namespace="ExampleModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="ExampleModelStoreContainer" />
+        <Function Name="pr_GetPersonDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FirstName" Type="varchar" Mode="In" />
+          <Parameter Name="LastName" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="pr_SearchPerson" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="FilterTerm" Type="nvarchar" Mode="In" />
           <Parameter Name="SortIndex" Type="int" Mode="In" />
@@ -29,12 +33,22 @@
             <Parameter Name="TotalRowsCount" Mode="InOut" Type="Int32" />
             <Parameter Name="FilteredRowsCount" Mode="InOut" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="pr_GetPersonDetail" ReturnType="Collection(ExampleModel.pr_GetPersonDetail_Result)">
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="pr_SearchPerson_Result">
           <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
           <Property Type="DateTime" Name="DateOfBirth" Nullable="true" Precision="23" />
           <Property Type="String" Name="Nationality" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="pr_GetPersonDetail_Result">
+          <Property Type="DateTime" Name="DateAdded" Nullable="true" Precision="23" />
+          <Property Type="String" Name="MobileTel" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="HomeTel" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -49,6 +63,16 @@
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
                 <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pr_GetPersonDetail" FunctionName="ExampleModel.Store.pr_GetPersonDetail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ExampleModel.pr_GetPersonDetail_Result">
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="MobileTel" ColumnName="MobileTel" />
+                <ScalarProperty Name="HomeTel" ColumnName="HomeTel" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

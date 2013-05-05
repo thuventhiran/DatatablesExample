@@ -33,7 +33,7 @@
 
 			$('#myTable').dataTable({
 				"bServerSide": true,
-				"sAjaxSource": "Home/GetAjaxData",
+				"sAjaxSource": "@Url.Action("GetAjaxData", "Home")",
 				"bProcessing": true,
 				"aoColumns": [
 						{ "sName": "First Name" },

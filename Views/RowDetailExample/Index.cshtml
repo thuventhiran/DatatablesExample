@@ -1,72 +1,72 @@
 ﻿@model DatatablesExample.Models.HomeModel
 
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Row Detail Example</h2>
 <div class="row">
-    <div class="twelve columns">
-        <table id="myTable">
-            <thead>
-                <tr>
-                    <th>&nbsp;</th>
-                    <th>First Name
-                    </th>
-                    <th>Last Name
-                    </th>
-                    <th>Nationality
-                    </th>
-                    <th>Date of Birth
-                    </th>
-                </tr>
-            </thead>
-        </table>
-    </div>
+	<div class="twelve columns">
+		<table id="myTable">
+			<thead>
+				<tr>
+					<th>&nbsp;</th> <!--Empty column header for expand/collapse icons-->
+					<th>First Name
+					</th>
+					<th>Last Name
+					</th>
+					<th>Nationality
+					</th>
+					<th>Date of Birth
+					</th>
+				</tr>
+			</thead>
+		</table>
+	</div>
 </div>
 @section scripts{
-    <script type="text/javascript" language="javascript">
+	<script type="text/javascript" language="javascript">
 
-        function fnFormatDetails(oTable, nTr) {
-            var aData = oTable.fnGetData(nTr);
+		function fnFormatDetails(oTable, nTr) {
+			var aData = oTable.fnGetData(nTr);
 
-            var firstName = aData[1];
-            var lastName = aData[2];
+			var firstName = aData[1];
+			var lastName = aData[2];
 
-            var html = 'empty';
+			var html = 'empty';
 
-            $.ajax(
+			$.ajax(
 					{
-					    url: "@Url.Action("GetRowDetail", "RowDetailExample")",
-					    type: "POST",
-					    data: { firstName: firstName, lastName: lastName },
-					    async: false,
-                        cache: false,
-					    success: function(response)
-					    {
-					        html = response;
-					    },
-					    error: function () {
-					        alert("An error occurred whilst getting the row detail.");
-					    }
+						url: "@Url.Action("GetRowDetail", "RowDetailExample")",
+						type: "POST",
+						data: { firstName: firstName, lastName: lastName },
+						async: false,
+						cache: false,
+						success: function(response)
+						{
+							html = response;
+						},
+						error: function () {
+							alert("An error occurred whilst getting the row detail.");
+						}
 					});
 
-            return html;
-        }
+			return html;
+		}
 
-        $(function () {
+		$(function () {
 
-            var dt = $('#myTable').dataTable({
-                "bServerSide": true,
-                "sAjaxSource": "@Url.Action("GetAjaxData", "RowDetailExample")",
+			var dt = $('#myTable').dataTable({
+				"bServerSide": true,
+				"sAjaxSource": "@Url.Action("GetAjaxData", "RowDetailExample")",
 				"bProcessing": true,
 				"aoColumns": [
 						{
-						    "sName": "Expand"
+							"sName": "Expand"
 							, bSortable: false
 							, "mRender": function (data, type, row) {
-							    return '<div class="foundicon-plus detail" style="color:#5da423; cursor:pointer"></div>';
+								return '<div class="foundicon-plus detail" style="color:#5da423; cursor:pointer"></div>';
 							}
 						},
 						{ "sName": "First Name" },
@@ -77,32 +77,31 @@
 			});
 
 
-		    /* define onClick event handlers for expand/collapse row
-			 */
-            $('#myTable tbody tr td div.detail').live('click', function () {
-		        var trElement = this.parentNode.parentNode;
+			/* define onClick event handlers for expand/collapse icon*/
+			$('#myTable tbody tr td div.detail').live('click', function () {
+				var trElement = this.parentNode.parentNode;
 
-		        var $detailIconElement = $(this);
+				var $detailIconElement = $(this);
 
-                //if the row is open, close it
-		        if ($detailIconElement.hasClass('foundicon-minus')) {
-                    //change the icon
-                    $detailIconElement.removeClass('foundicon-minus');
-                    $detailIconElement.addClass('foundicon-plus');
-                    $detailIconElement.css('color', '#5da423');
-                    //close the row
-                    dt.fnClose(trElement);
-		        }
-		        else //the row is closed, open it
-		        {
-		            //change the icon
-		            $detailIconElement.removeClass('foundicon-plus');
-		            $detailIconElement.addClass('foundicon-minus');
-		            $detailIconElement.css('color', '#c60f13');
-		            //open the row		            
-		            dt.fnOpen(trElement, fnFormatDetails(dt, trElement), 'details');
-		        }
-		    });
+				//if the row is open, close it
+				if ($detailIconElement.hasClass('foundicon-minus')) {
+					//change the icon
+					$detailIconElement.removeClass('foundicon-minus');
+					$detailIconElement.addClass('foundicon-plus');
+					$detailIconElement.css('color', '#5da423');
+					//close the row
+					dt.fnClose(trElement);
+				}
+				else //the row is closed, open it
+				{
+					//change the icon
+					$detailIconElement.removeClass('foundicon-plus');
+					$detailIconElement.addClass('foundicon-minus');
+					$detailIconElement.css('color', '#c60f13');
+					//open the row		            
+					dt.fnOpen(trElement, fnFormatDetails(dt, trElement), 'details');
+				}
+			});
 		});
-    </script>
+	</script>
 }

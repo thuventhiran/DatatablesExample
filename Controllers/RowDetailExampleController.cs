@@ -58,7 +58,10 @@ namespace DatatablesExample.Controllers
 
         var detail = data.FirstOrDefault();
 
-        return PartialView("RowDetail", new RowDetailModel() { DateAdded = detail.DateAdded, MobileTel = detail.MobileTel, HomeTel = detail.HomeTel, EmailAddress = detail.EmailAddress });
+        return PartialView("RowDetail", new RowDetailModel() {  DateAdded = detail.DateAdded, 
+                                                                MobileTel = detail.MobileTel, 
+                                                                HomeTel = detail.HomeTel, 
+                                                                EmailAddress = detail.EmailAddress });
       }
     }
 

@@ -5,7 +5,8 @@ using System.Web;
 
 namespace DatatablesExample.Models
 {
-  public class HomeModel
-  {
-  }
+    public class ResponsiveExampleModel
+    {
+
+    }
 }

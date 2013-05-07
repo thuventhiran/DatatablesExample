@@ -129,6 +129,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ResponsiveExampleController.cs" />
     <Compile Include="Controllers\RowDetailExampleController.cs" />
     <Compile Include="Data\ExampleDB.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -139,6 +140,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\HomeModel.cs" />
+    <Compile Include="Models\ResponsiveExampleModel.cs" />
     <Compile Include="Models\JQueryDataTableParamModel.cs" />
     <Compile Include="Models\RowDetailModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -234,6 +236,14 @@
     <Content Include="Content\DataTables-1.9.4\media\images\sort_both.png" />
     <Content Include="Content\DataTables-1.9.4\media\images\sort_desc.png" />
     <Content Include="Content\DataTables-1.9.4\media\images\sort_desc_disabled.png" />
+    <Content Include="Content\fooTable\footable-0.1.css" />
+    <Content Include="Content\fooTable\footable.js" />
+    <Content Include="Content\fooTable\footable.plugin.datatablesIntegration.js" />
+    <Content Include="Content\fooTable\img\down.png" />
+    <Content Include="Content\fooTable\img\minus.png" />
+    <Content Include="Content\fooTable\img\plus.png" />
+    <Content Include="Content\fooTable\img\sorting_sprite.png" />
+    <Content Include="Content\fooTable\img\up.png" />
     <Content Include="Content\foundation\app.css" />
     <Content Include="Content\foundation\foundation.css" />
     <Content Include="Content\foundation\foundation.mvc.css" />
@@ -296,9 +306,11 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="DemoPic.PNG" />
+    <Content Include="desktopResponsive.PNG" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Licence.txt" />
+    <Content Include="phoneResponsive.PNG" />
     <Content Include="Readme.html" />
     <Content Include="Scripts\DataTables-1.9.4\docs\media\js\doc.js" />
     <Content Include="Scripts\DataTables-1.9.4\docs\media\js\jquery.js" />
@@ -372,6 +384,7 @@
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Scripts\zepto.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="tabletResponsive.PNG" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -411,6 +424,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\RowDetail.cshtml" />
     <Content Include="Views\RowDetailExample\Index.cshtml" />
+    <Content Include="Views\ResponsiveExample\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

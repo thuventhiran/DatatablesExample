@@ -1,0 +1,48 @@
+﻿@model DatatablesExample.Models.HomeModel
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Responsive Example</h2>
+<div class="row">
+	<div class="twelve columns">
+		<table id="myTable" class="footable">
+			<thead>
+				<tr>
+					<th data-class="expand">First Name</th>
+					<th>Last Name</th>
+					<th data-hide="phone">Nationality</th>
+					<th data-hide="phone,tablet">Date of Birth</th>
+				</tr>
+			</thead>
+		</table>
+	</div>
+</div>
+@section scripts{
+	<script type="text/javascript" language="javascript" src="@Url.Content("~/Content/fooTable/footable.js")"></script>
+	<script type="text/javascript" language="javascript" src="@Url.Content("~/Content/fooTable/footable.plugin.datatablesIntegration.js")"></script>
+	<script type="text/javascript" language="javascript">
+		$(function () {
+			$('#myTable').dataTable({
+				"bServerSide": true,
+				"sAjaxSource": "@Url.Action("GetAjaxData", "ResponsiveExample")",
+				"bProcessing": true,
+				"aoColumns": [
+						{ "sName": "First Name" },
+						{ "sName": "Last Name" },
+						{ "sName": "Nationality" },
+						{ "sName": "Date of Birth" }
+				],
+				"fnDrawCallback": function (oSettings) {
+					var $dt = $('#myTable').footable({
+						breakpoints: { // The different screen resolution breakpoints
+							phone: 320,
+							tablet: 768
+						}
+					});
+					$dt.trigger('footable_resize');
+				}
+			});
+		});
+	</script>
+}
